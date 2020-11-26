@@ -1,7 +1,11 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Gatsby Blog Site`,
+    description: `Write your site description here!`,
     author: `@gatsbyjs`,
   },
   plugins: [
@@ -11,6 +15,15 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: "vf0ielhy9a1g",
+        accessToken: "NtjCzgXgLXlNAhuw8zn4ZReQwATR-frfB-PTousRodU",
+        forceFullSync: true,
       },
     },
     `gatsby-transformer-sharp`,
